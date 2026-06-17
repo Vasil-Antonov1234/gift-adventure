@@ -1,0 +1,20 @@
+{
+  "name": "gift-adventure",
+  "version": "1.0.0",
+  "description": "JS Back End Workshop",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vasil-Antonov1234/gift-adventure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vasil-Antonov1234/gift-adventure/issues"
+  },
+  "homepage": "https://github.com/Vasil-Antonov1234/gift-adventure#readme"
+}
