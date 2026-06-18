@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Cappadocia",
+        "description": "Cappadocia is a historical region in Central Anatolia region, Turkey.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg/330px-Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg",
+        "location": "Turkey"
+    },
+    {
+        "id": 2,
+        "name": "Santorini",
+        "description": "Santorini is a Greek island in the southern Aegean Sea, about 200 km (120 mi) southeast from the mainland.",
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1661964149725-fbf14eabd38c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2FudG9yaW5pfGVufDB8fDB8fHww",
+        "location": "Grece"
+    },
+    {
+        "id": 3,
+        "name": "Easter Island",
+        "description": "Easter Island is an island and special territory of Chile in the southeastern Pacific Ocean.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1dGCCjJXeoPHNDbJkYe_HoGt9c5RF4VZcdw&s",
+        "location": "Chile"
+    },
+    {
+        "id": 4,
+        "name": "Cairo",
+        "description": "Cairo is the capital and largest city of Egypt and the Cairo Governorate. It is home to more than 9.8 million people.",
+        "imageUrl": "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fpcm98ZW58MHx8MHx8fDA%3D",
+        "location": "Egipt"
+    },
+    {
+        "id": 5,
+        "name": "Seville",
+        "description": "Seville is the capital and largest city of the Spanish autonomous community of Andalusia and the province of Seville.",
+        "imageUrl": "https://media.istockphoto.com/id/1305789626/photo/spain-square-in-seville-spain-a-great-example-of-iberian-renaissance-architecture-during-a.jpg?s=612x612&w=0&k=20&c=I1W66xmp38MqZZcKxdKJJ_kohhFfrHBUybh0vVl3OYE=",
+        "location": "Spain"
+    }
+]

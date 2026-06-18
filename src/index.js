@@ -1,5 +1,6 @@
 import http from "http";
 import fs from "fs/promises";
+import { renderHome } from "./templates/homeTemplate.js";
 
 const server = http.createServer(async (req, res) => {
 
@@ -22,7 +23,7 @@ const server = http.createServer(async (req, res) => {
     let currentPage = "<h1>404 Page not found</h1>";
 
     if (req.url.endsWith("/")) {
-        currentPage = await fs.readFile("./src/views/index.html", "utf-8");
+        currentPage = await renderHome();
     };
     
     if (req.url.endsWith("/adventures/add-location")) {
