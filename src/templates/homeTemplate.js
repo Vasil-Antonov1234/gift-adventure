@@ -23,10 +23,10 @@ export async function renderHome() {
             `
         }
 
-        return homePage.replace("{{adventures}}", data.map((adventure) => adventureTemplate(adventure)).join("\n"));
+        return homePage.replace("{{adventures}}", data.adventures.map((adventure) => adventureTemplate(adventure)).join("\n"));
 
     } catch (error) {
-        alert(error.message)
+        console.log(error.message)
     }
 
 
