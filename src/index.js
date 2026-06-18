@@ -65,11 +65,12 @@ const server = http.createServer(async (req, res) => {
                         return res.end();
                     }
 
-                    currentPage = await fs.readFile("./src/views/addLocation.html", "utf-8");
-                    res.writeHead(200, { "content-type": "text/html" });
-                    res.write(currentPage);
+                    // currentPage = await fs.readFile("./src/views/addLocation.html", "utf-8");
+                    // res.writeHead(200, { "content-type": "text/html" });
+                    // res.write(currentPage);
+                    // return res.end();
+                    res.writeHead(302, { location: "/"});
                     return res.end();
-                    
                 } catch (error) {
                     console.log(error.message)
                 }
