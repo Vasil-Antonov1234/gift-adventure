@@ -7,36 +7,28 @@ export async function renderHome() {
         const dataJson = await fs.readFile("./src/data/data.json", "utf-8");
         const data = JSON.parse(dataJson);
 
-        // const homeTemplate = `
-        //     <li class="adventure-card">
-        //         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg/330px-Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg" alt="Cappadocia">
-        //         <h3>Cappadocia</h3>
-        //         <p><span>Location: </span>Turkey</p>
-        //         <p><span>Description: </span>Cappadocia is a historical region in Central Anatolia region, Turkey.</p>
-        //         <ul class="buttons">
-        //             <li class="btn edit"><a href="" class="button-card">Edit</a></li>
-        //             <li class="btn delete"><a href="" class="button-card">Delete</a></li>
-        //         </ul>
-        //     </li>
-        // `
-
-
-        const adventures = []; 
-
-        data.map((x) => {
-            adventures.push(
-                `
+        function adventureTemplate(adventure) {
+            
+            return `
                 <li class="adventure-card">
-                    <img src=${x.imageUrl} alt="Cappadocia">
-                    <h3>${x.name}</h3>
-                    <p><span>Location: </span>${x.location}</p>
-                    <p><span>Description: </span>${x.description}</p>
+                    <img src=${adventure.imageUrl} alt="Cappadocia">
+                    <h3>${adventure.name}</h3>
+                    <p><span>Location: </span>${adventure.location}</p>
+                    <p><span>Description: </span>${adventure.description}</p>
                     <ul class="buttons">
                         <li class="btn edit"><a href="" class="button-card">Edit</a></li>
                         <li class="btn delete"><a href="" class="button-card">Delete</a></li>
                     </ul>
-             </li>
-                `
+                </li>
+            `
+        } 
+
+
+        const adventures = []; 
+
+        data.map((adventure) => {
+            adventures.push(
+                adventureTemplate(adventure)
             )
         })
 
