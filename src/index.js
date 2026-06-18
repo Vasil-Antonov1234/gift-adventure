@@ -19,10 +19,18 @@ const server = http.createServer(async (req, res) => {
         }
     };
 
-    const homePage = await fs.readFile("./src/views/index.html", "utf-8");
+    let currentPage = "";
+
+    if (req.url.endsWith("/")) {
+        currentPage = await fs.readFile("./src/views/index.html", "utf-8");
+    };
+    
+    if (req.url.endsWith("/adventures/add-location")) {
+        currentPage = await fs.readFile("./src/views/addLocation.html"); 
+    };
 
     res.writeHead(200, { "content-type": "text/html" });
-    res.write(homePage);
+    res.write(currentPage);
 
     res.end();
 });
