@@ -19,7 +19,7 @@ const server = http.createServer(async (req, res) => {
         }
     };
 
-    let currentPage = "";
+    let currentPage = "<h1>404 Page not found</h1>";
 
     if (req.url.endsWith("/")) {
         currentPage = await fs.readFile("./src/views/index.html", "utf-8");
@@ -27,6 +27,10 @@ const server = http.createServer(async (req, res) => {
     
     if (req.url.endsWith("/adventures/add-location")) {
         currentPage = await fs.readFile("./src/views/addLocation.html"); 
+    };
+
+    if (req.url.endsWith("/adventures/add-adventure")) {
+        currentPage = await fs.readFile("./src/views/addAdventure.html");
     };
 
     res.writeHead(200, { "content-type": "text/html" });
