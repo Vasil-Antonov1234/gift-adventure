@@ -148,6 +148,7 @@ form button:hover {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    overflow: hidden;
 }
 
 .adventures ul li .buttons {
@@ -194,9 +195,10 @@ form button:hover {
 
 
 .adventures li img {
-    width: 450px;
+    width: 500px;
     height: 250px;
-    margin: 0 auto;
+    margin-left: -15px;
+    margin-top: -15px;
     display: block;
 }
 
@@ -215,6 +217,8 @@ body>form>label:nth-child(3) {
     text-align: center;
     margin: 0.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 27px;
+    color: gray;
 }
 
 .adventures li span {
