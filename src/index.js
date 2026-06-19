@@ -2,6 +2,7 @@ import http from "http";
 import fs from "fs/promises";
 import { renderHome } from "./templates/homeTemplate.js";
 import locationService from "./services/locationService.js";
+import { renderAddAdventure } from "./templates/addAdventureTemplate.js";
 
 const server = http.createServer(async (req, res) => {
 
@@ -34,20 +35,20 @@ const server = http.createServer(async (req, res) => {
         };
 
         if (req.url.endsWith("/adventures/add-adventure")) {
-            currentPage = await fs.readFile("./src/views/addAdventure.html");
+            currentPage = await renderAddAdventure();
+            // currentPage = await fs.readFile("./src/views/addAdventure.html");
         };
 
         res.writeHead(200, { "content-type": "text/html" });
         res.write(currentPage);
 
-        res.end();
+        return res.end();
     };
 
     if (req.method === "POST") {
 
         if (req.url.endsWith("/adventures/add-location")) {
             let body = "";
-            let currentPage = "";
             
             req.on("data", (chunk) => {
                 body += chunk;
@@ -65,10 +66,6 @@ const server = http.createServer(async (req, res) => {
                         return res.end();
                     }
 
-                    // currentPage = await fs.readFile("./src/views/addLocation.html", "utf-8");
-                    // res.writeHead(200, { "content-type": "text/html" });
-                    // res.write(currentPage);
-                    // return res.end();
                     res.writeHead(302, { location: "/"});
                     return res.end();
                 } catch (error) {

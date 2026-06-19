@@ -4,6 +4,9 @@ const dataJson = await fs.readFile("./src/data/data.json", "utf-8");
 const data = JSON.parse(dataJson);
 
 export default {
+    async getAll() {
+        return data.locations;
+    },
     async add(name) {
         
         if (data.locations.indexOf(name) !== -1) {
