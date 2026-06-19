@@ -24,16 +24,16 @@
         </nav>
     </header>
     <main>
-        <form action="#" method="" class="adventure-form" enctype="multipart/form-data">
+        <form action="/adventures/add-adventure" method="post" class="adventure-form">
             <h2>Add Adventure</h2>
             <label for="name">Name</label>
             <input name="name" type="text" id="name">
             <label for="description">Description</label>
             <textarea name="description" id="description"></textarea>
-            <label for="image">Image</label>
-            <input name="upload" type="file" id="image">
+            <!-- <label for="image">Image</label>
+            <input name="uploadImage" type="file" id="image"> -->
             <label for="imageUrl">ImageUrl</label>
-            <input name="upload" type="text" id="imageUrl">
+            <input name="imageUrl" type="text" id="imageUrl">
             <label for="group">Location</label>
             <select name="location" id="group">
                 {{locations}}
