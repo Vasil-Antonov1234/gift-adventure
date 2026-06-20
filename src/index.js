@@ -43,24 +43,24 @@ const server = http.createServer(async (req, res) => {
 
         if (req.url.startsWith("/adventures/edit")) {
             const adventureId = req.url.split("/").pop();
-            
+
             try {
                 const adventure = await adventureService.getAdventureById(adventureId);
-                
+
                 currentPage = await renderEditAdventure(adventure);
             } catch (error) {
                 console.log(error.message);
             };
-            
+
         };
 
         if (req.url.startsWith("/adventure/book/")) {
             const adventureId = req.url.split("/").pop();
 
             try {
-              const adventure = await adventureService.getAdventureById(adventureId);
-              
-              currentPage = await renderBookAdventure(adventure);
+                const adventure = await adventureService.getAdventureById(adventureId);
+
+                currentPage = await renderBookAdventure(adventure);
             } catch (error) {
                 console.log(error.message);
             };
@@ -76,7 +76,7 @@ const server = http.createServer(async (req, res) => {
 
         if (req.url.endsWith("/adventures/add-location")) {
             let body = "";
-            
+
             req.on("data", (chunk) => {
                 body += chunk;
             });
@@ -84,7 +84,7 @@ const server = http.createServer(async (req, res) => {
             req.on("end", async () => {
                 const formData = new URLSearchParams(body);
                 const name = formData.get("locaton");
-                
+
                 try {
                     const result = await locationService.add(name);
 
@@ -93,7 +93,7 @@ const server = http.createServer(async (req, res) => {
                         return res.end();
                     }
 
-                    res.writeHead(302, { location: "/"});
+                    res.writeHead(302, { location: "/" });
                     return res.end();
                 } catch (error) {
                     console.log(error.message)
@@ -127,7 +127,7 @@ const server = http.createServer(async (req, res) => {
                         return res.end();
                     };
 
-                    res.writeHead(302, { location: "/"});
+                    res.writeHead(302, { location: "/" });
                     return res.end();
                 } catch (error) {
                     console.log(error.message)
@@ -144,7 +144,7 @@ const server = http.createServer(async (req, res) => {
                 body += chunk;
             });
 
-            req.on("end", async() => {
+            req.on("end", async () => {
                 const formData = new URLSearchParams(body)
                 const name = formData.get("name");
                 const description = formData.get("description");
@@ -155,7 +155,7 @@ const server = http.createServer(async (req, res) => {
                     const oldAdventure = await adventureService.getAdventureById(adventureId);
                     await adventureService.editAdventure({ name, description, imageUrl, locationId }, oldAdventure);
 
-                    res.writeHead(302, { location: "/"});
+                    res.writeHead(302, { location: "/" });
                     return res.end();
                 } catch (error) {
                     console.log(error.message);
@@ -168,13 +168,35 @@ const server = http.createServer(async (req, res) => {
             const adventureId = req.url.split("/").pop();
 
             try {
-              await adventureService.deleteAdventureById(adventureId);
-              
-              res.writeHead(302, { location: "/" });
-              return res.end();
+                await adventureService.deleteAdventureById(adventureId);
+
+                res.writeHead(302, { location: "/" });
+                return res.end();
             } catch (error) {
                 console.log(error.message);
             };
+        };
+
+        if (req.url.endsWith("/")) {
+            let body = "";
+
+            req.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            let currentPage = ""
+
+            req.on("end", async () => {
+                const formData = new URLSearchParams(body);
+
+                const searchData = formData.get("search");
+
+                currentPage = await renderHome(searchData)
+                
+                res.writeHead(200, { "content-type": "text/html" });
+                res.write(currentPage);
+                return res.end()
+            })
         }
     }
 

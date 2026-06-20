@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 
-export async function renderHome() {
+export async function renderHome(search) {
 
     try {
         let homePage = await fs.readFile("./src/views/index.html", "utf-8");
@@ -23,7 +23,13 @@ export async function renderHome() {
             `
         }
 
-        return homePage.replace("{{adventures}}", data.adventures.map((adventure) => adventureTemplate(adventure)).join("\n"));
+        let adventures = data.adventures;
+
+        if (search) {
+            adventures = data.adventures.filter((x) => x.name.toLowerCase().includes(search.toLowerCase()));
+        }
+
+        return homePage.replace("{{adventures}}", adventures.map((adventure) => adventureTemplate(adventure)).join("\n"));
 
     } catch (error) {
         console.log(error.message)
