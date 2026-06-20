@@ -9,22 +9,16 @@ export default {
         return data.locations;
     },
     async getLocationById(locationId) {
-        // const location = data.locations.find((x) => x === locationId);
-        const location = data.locations.filter((x) => x.id === Number(locationId));
-        return location[0];
+        const location = data.locations.find((x) => x.id === Number(locationId));
+        // const location = data.locations.filter((x) => x.id === Number(locationId));
+        return location;
     },
     async add(name) {
 
-        let error = "";
-
-        data.locations.forEach((x) => {
-            if (x.name.toLowerCase() === name.toLowerCase()) {
-                error = "<h1>This location already exists!<h1>";
-            };
-        })
+        let error = data.locations.find((x) => x.name.toLowerCase() === name.toLowerCase());
 
         if (error) {
-            return error
+            return "<h1>This location already exists!<h1>";
         }
         
         const id = uuidV4();
