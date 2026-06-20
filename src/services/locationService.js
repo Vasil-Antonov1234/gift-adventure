@@ -9,8 +9,7 @@ export default {
         return data.locations;
     },
     async getLocationById(locationId) {
-        const location = data.locations.find((x) => x.id === Number(locationId));
-        // const location = data.locations.filter((x) => x.id === Number(locationId));
+        const location = data.locations.find((x) => x.id === locationId);
         return location;
     },
     async add(name) {
