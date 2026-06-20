@@ -43,5 +43,15 @@ export default {
         } catch (error) {
             console.log(error.message)
         }
+    },
+    async deleteAdventureById(adventureId) {
+        const filteredAdventures = data.adventures.filter((x) => x.id !== adventureId);
+
+        data.adventures = filteredAdventures;
+        try {
+          await fs.writeFile("./src/data/data.json", JSON.stringify(data));  
+        } catch (error) {
+            console.log(error.message);
+        };
     }
 }

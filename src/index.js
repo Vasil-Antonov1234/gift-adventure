@@ -162,6 +162,19 @@ const server = http.createServer(async (req, res) => {
                 };
             });
 
+        };
+
+        if (req.url.startsWith("/adventure/book/")) {
+            const adventureId = req.url.split("/").pop();
+
+            try {
+              await adventureService.deleteAdventureById(adventureId);
+              
+              res.writeHead(302, { location: "/" });
+              return res.end();
+            } catch (error) {
+                console.log(error.message);
+            };
         }
     }
 
