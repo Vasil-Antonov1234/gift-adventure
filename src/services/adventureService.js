@@ -7,14 +7,20 @@ const data = JSON.parse(dataJson);
 
 export default {
     async add(newAdventure) {
+
+        let error = "";
     
         data.adventures.forEach((x) => {
             
-            if (x.name === newAdventure.name) {
-                return "<h1>This adventure already exists!<h1>"
+            if (x.name.toLowerCase() === newAdventure.name.toLowerCase()) {
+                error = "<h1>This adventure already exists!<h1>"
             }
 
         });
+
+        if (error) {
+            return error;
+        };
 
         newAdventure.id = uuidV4();
 

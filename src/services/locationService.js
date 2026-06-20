@@ -14,11 +14,19 @@ export default {
         return location[0];
     },
     async add(name) {
-        
-        if (data.locations.indexOf(name) !== -1) {
-            return "<h1>This location already exists!<h1>"
-        };
 
+        let error = "";
+
+        data.locations.forEach((x) => {
+            if (x.name.toLowerCase() === name.toLowerCase()) {
+                error = "<h1>This location already exists!<h1>";
+            };
+        })
+
+        if (error) {
+            return error
+        }
+        
         const id = uuidV4();
         const newLocation = { id, name };
         
