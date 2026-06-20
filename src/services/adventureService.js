@@ -26,15 +26,22 @@ export default {
         await fs.writeFile("./src/data/data.json", JSON.stringify(data))
     },
     async editAdventure(newAdventure, oldAdventure) {
-        data.adventures.forEach((x) => {
-            if (x.id === oldAdventure.id) {
-                x.name = newAdventure.name;
-                x.description = newAdventure.description,
-                x.imageUrl = newAdventure.imageUrl,
-                x.location = newAdventure.location
-            }
-        });
-
-        await fs.writeFile("./src/data/data.json", JSON.stringify(data));
+        
+        try {
+            const newLocation = await locationService.getLocationById(newAdventure.locationId);
+            
+            data.adventures.forEach((x) => {
+                if (x.id === oldAdventure.id) {
+                    x.name = newAdventure.name;
+                    x.description = newAdventure.description,
+                    x.imageUrl = newAdventure.imageUrl,
+                    x.location = newLocation.name
+                }
+            });
+    
+            await fs.writeFile("./src/data/data.json", JSON.stringify(data));     
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 }
