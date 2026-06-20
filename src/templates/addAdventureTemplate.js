@@ -1,9 +1,9 @@
 import fs from "fs/promises";
 import locationService from "../services/locationService.js";
 
-export function locationTemplate(location) {
+export function locationTemplate(location, currentLocation) {
     return `
-        <option value=${location.id}>${location.name}</option>
+        <option value=${location.id} ${location.name === currentLocation ? "selected" : ""}>${location.name}</option>
     `;
 };
 
