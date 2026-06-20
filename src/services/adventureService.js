@@ -24,5 +24,17 @@ export default {
         newAdventure.location = location.name;
         data.adventures.push(newAdventure);
         await fs.writeFile("./src/data/data.json", JSON.stringify(data))
+    },
+    async editAdventure(newAdventure, oldAdventure) {
+        data.adventures.forEach((x) => {
+            if (x.id === oldAdventure.id) {
+                x.name = newAdventure.name;
+                x.description = newAdventure.description,
+                x.imageUrl = newAdventure.imageUrl,
+                x.location = newAdventure.location
+            }
+        });
+
+        await fs.writeFile("./src/data/data.json", JSON.stringify(data));
     }
 }

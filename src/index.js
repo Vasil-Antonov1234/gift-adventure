@@ -4,7 +4,6 @@ import { renderHome } from "./templates/homeTemplate.js";
 import locationService from "./services/locationService.js";
 import { renderAddAdventure } from "./templates/addAdventureTemplate.js";
 import adventureService from "./services/adventureService.js";
-import { resourceUsage } from "process";
 import { renderEditAdventure } from "./templates/editAdventureTemplate.js";
 
 const server = http.createServer(async (req, res) => {
@@ -121,8 +120,36 @@ const server = http.createServer(async (req, res) => {
                     console.log(error.message)
                 }
             })
-        }
+        };
 
+        if (req.url.startsWith("/adventures/edit")) {
+            const adventureId = req.url.split("/").pop();
+
+            let body = "";
+
+            req.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            req.on("end", async() => {
+                const formData = new URLSearchParams(body)
+                const name = formData.get("name");
+                const description = formData.get("description");
+                const imageUrl = formData.get("imageUrl");
+                const locationId = formData.get("location");
+
+                try {
+                    const oldAdventure = await adventureService.getAdventureById(adventureId);
+                    await adventureService.editAdventure({ name, description, imageUrl, locationId }, oldAdventure);
+
+                    res.writeHead(302, { location: "/"});
+                    return res.end();
+                } catch (error) {
+                    console.log(error.message);
+                };
+            });
+
+        }
     }
 
 });
