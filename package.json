@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Vasil-Antonov1234/gift-adventure/issues"
   },
-  "homepage": "https://github.com/Vasil-Antonov1234/gift-adventure#readme"
+  "homepage": "https://github.com/Vasil-Antonov1234/gift-adventure#readme",
+  "dependencies": {
+    "uuid": "^14.0.0"
+  }
 }
