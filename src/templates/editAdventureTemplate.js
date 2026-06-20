@@ -21,7 +21,7 @@ function editAdventureTemplate(adventure) {
         <label for="image">Image</label>
         <input type="url" id="image" name="imageUrl" value=${adventure.imageUrl}>
         <label for="group">Location</label>
-        <select id="group">
+        <select id="group" name="location">
             {{locations}}
         </select>
     `
