@@ -17,7 +17,7 @@ export async function renderHome() {
                     <p><span>Description: </span>${adventure.description}</p>
                     <ul class="buttons">
                         <li class="btn edit"><a href="/adventures/edit/${adventure.id}" class="button-card">Edit</a></li>
-                        <li class="btn delete"><a href="" class="button-card">Delete</a></li>
+                        <li class="btn delete"><a href="/adventure/book/${adventure.id}" class="button-card">Book</a></li>
                     </ul>
                 </li>
             `

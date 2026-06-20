@@ -5,6 +5,7 @@ import locationService from "./services/locationService.js";
 import { renderAddAdventure } from "./templates/addAdventureTemplate.js";
 import adventureService from "./services/adventureService.js";
 import { renderEditAdventure } from "./templates/editAdventureTemplate.js";
+import { renderBookAdventure } from "./templates/bookAdventureTemplate.js";
 
 const server = http.createServer(async (req, res) => {
 
@@ -52,6 +53,18 @@ const server = http.createServer(async (req, res) => {
             };
             
         };
+
+        if (req.url.startsWith("/adventure/book/")) {
+            const adventureId = req.url.split("/").pop();
+
+            try {
+              const adventure = await adventureService.getAdventureById(adventureId);
+              
+              currentPage = await renderBookAdventure(adventure);
+            } catch (error) {
+                console.log(error.message);
+            };
+        }
 
         res.writeHead(200, { "content-type": "text/html" });
         res.write(currentPage);

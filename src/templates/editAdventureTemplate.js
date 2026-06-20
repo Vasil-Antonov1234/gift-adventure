@@ -6,8 +6,6 @@ export async function renderEditAdventure(adventure) {
     let editAdventurePage = await fs.readFile("./src/views/edit.html", "utf-8");
     const locations = await locationService.getAll();
 
-    const locationsHtml = locations.map((x) => locationTemplate(x)).join("/n");
-
     return editAdventurePage.replace("{{currentAdventure}}", editAdventureTemplate(adventure)).replace("{{locations}}", locations.map((x) => locationTemplate(x, adventure.location)).join("/n"));
 };
 
