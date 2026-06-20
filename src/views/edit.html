@@ -25,17 +25,7 @@
     </header>
     <main>
         <form method="post" class="adventure-form">
-            <h2>Edit</h2>
-            <label for="name">Name</label>
-            <input type="text" id="name" value="Cappadocia">
-            <label for="description">Description</label>
-            <textarea id="description">Cappadocia is a historical region in Central Anatolia region, Turkey.</textarea>
-            <label for="image">Image</label>
-            <input type="file" id="image">
-            <label for="group">Location</label>
-            <select id="group">
-                {{locations}}
-            </select>
+            {{currentAdventure}}
             <button>Edit</button>
         </form>
     </main>

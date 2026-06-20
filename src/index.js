@@ -42,9 +42,16 @@ const server = http.createServer(async (req, res) => {
         };
 
         if (req.url.startsWith("/adventures/edit")) {
-            const adventure = adventureService.getAdventureById();
+            const adventureId = req.url.split("/").pop();
             
-            currentPage = await renderEditAdventure();
+            try {
+                const adventure = await adventureService.getAdventureById(adventureId);
+                
+                currentPage = await renderEditAdventure(adventure);
+            } catch (error) {
+                console.log(error.message);
+            };
+            
         };
 
         res.writeHead(200, { "content-type": "text/html" });
