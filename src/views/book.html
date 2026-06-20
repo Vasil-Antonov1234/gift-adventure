@@ -13,28 +13,19 @@
 <body>
     <header>
         <nav>
-            <a href="">
+            <a href="/">
                 <span class="logo">Gift Adventure</span>
             </a>
             <ul class="navigation">
                 <li><a href="/">Home</a></li>
-                <li><a href="/adventures/add-Location">Add Location</a></li>
-                <li><a href="/adventures/add-cat">Add Adventure</a></li>
+                <li><a href="/adventures/add-location">Add Location</a></li>
+                <li><a href="/adventures/add-adventure">Add Adventure</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <form action="#" method="" class="adventure-form">
-            <h2>Book</h2>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg/330px-Cappadocia_balloon_trip%2C_Ortahisar_Castle_%2811893715185%29.jpg" alt="">
-            <label for="name">Name</label>
-            <input type="text" id="name" value="Cappadocia" disabled>
-            <label for="description">Description</label>
-            <textarea id="description" disabled>Cappadocia is a historical region in Central Anatolia region, Turkey.</textarea>
-            <label for="group">Location</label>
-            <select id="group" disabled>
-                <option value="Fluffy Cat">Turkey</option>
-            </select>
+        <form method="" class="adventure-form">
+            {{bookAdventure}}
             <button>BOOK</button>
         </form>
     </main>
