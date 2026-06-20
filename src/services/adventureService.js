@@ -6,6 +6,9 @@ const dataJson = await fs.readFile("./src/data/data.json", "utf-8");
 const data = JSON.parse(dataJson);
 
 export default {
+    async getAdventureById(adventureId) {
+        return data.adventures.find((x) => x.id === adventureId);
+    },
     async add(newAdventure) {
 
         let error = data.adventures.find((x) => x.name.toLowerCase() === newAdventure.name.toLowerCase());

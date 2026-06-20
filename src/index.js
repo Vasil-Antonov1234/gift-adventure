@@ -5,6 +5,7 @@ import locationService from "./services/locationService.js";
 import { renderAddAdventure } from "./templates/addAdventureTemplate.js";
 import adventureService from "./services/adventureService.js";
 import { resourceUsage } from "process";
+import { renderEditAdventure } from "./templates/editAdventureTemplate.js";
 
 const server = http.createServer(async (req, res) => {
 
@@ -38,6 +39,12 @@ const server = http.createServer(async (req, res) => {
 
         if (req.url.endsWith("/adventures/add-adventure")) {
             currentPage = await renderAddAdventure();
+        };
+
+        if (req.url.startsWith("/adventures/edit")) {
+            const adventure = adventureService.getAdventureById();
+            
+            currentPage = await renderEditAdventure();
         };
 
         res.writeHead(200, { "content-type": "text/html" });
