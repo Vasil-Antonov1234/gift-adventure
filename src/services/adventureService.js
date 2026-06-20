@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import locationService from "./locationService.js";
 
 const dataJson = await fs.readFile("./src/data/data.json", "utf-8");
 const data = JSON.parse(dataJson);
@@ -16,6 +17,10 @@ export default {
 
         newAdventure.id = data.idCount;
         data.idCount = data.idCount + 1;
+
+        const location = await locationService.getLocationById(newAdventure.locationId);
+
+        newAdventure.location = location.name;
         data.adventures.push(newAdventure);
         await fs.writeFile("./src/data/data.json", JSON.stringify(data))
     }

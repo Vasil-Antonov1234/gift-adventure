@@ -89,12 +89,12 @@ const server = http.createServer(async (req, res) => {
                 // const formData = new FormData(body);
                 const name = formData.get("name");
                 const description = formData.get("description");
-                const uploadImage = formData.get("uploadImage");
+                // const uploadImage = formData.get("uploadImage");
                 const imageUrl = formData.get("imageUrl");
-                const location = formData.get("location");
+                const locationId = formData.get("location");
 
                 try {
-                    const result = await adventureService.add({ name, description, uploadImage, imageUrl, location });
+                    const result = await adventureService.add({ name, description, imageUrl, locationId });
 
                     if (result) {
                         res.write(result);

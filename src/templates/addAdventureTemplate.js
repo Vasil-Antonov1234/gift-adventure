@@ -7,7 +7,7 @@ export async function renderAddAdventure() {
 
     function locationTemplate(location) {
         return `
-            <option value=${location}>${location}</option>
+            <option value=${location.id}>${location.name}</option>
         `;
     };
 

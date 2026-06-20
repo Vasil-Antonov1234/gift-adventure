@@ -7,6 +7,11 @@ export default {
     async getAll() {
         return data.locations;
     },
+    async getLocationById(locationId) {
+        // const location = data.locations.find((x) => x === locationId);
+        const location = data.locations.filter((x) => x.id === Number(locationId));
+        return location[0];
+    },
     async add(name) {
         
         if (data.locations.indexOf(name) !== -1) {
