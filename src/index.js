@@ -29,6 +29,12 @@ const server = http.createServer(async (req, res) => {
 
         let currentPage = "<h1>404 Page not found</h1>";
 
+        if (req.url.startsWith("/search")) {
+            const search = req.url.split("=").pop();
+
+            currentPage = await renderHome(search);
+        }
+
         if (req.url.endsWith("/")) {
             currentPage = await renderHome();
         };
@@ -176,28 +182,6 @@ const server = http.createServer(async (req, res) => {
                 console.log(error.message);
             };
         };
-
-        if (req.url.endsWith("/")) {
-            let body = "";
-
-            req.on("data", (chunk) => {
-                body += chunk;
-            });
-
-            let currentPage = ""
-
-            req.on("end", async () => {
-                const formData = new URLSearchParams(body);
-
-                const searchData = formData.get("search");
-
-                currentPage = await renderHome(searchData)
-                
-                res.writeHead(200, { "content-type": "text/html" });
-                res.write(currentPage);
-                return res.end()
-            })
-        }
     }
 
 });
